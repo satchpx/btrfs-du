@@ -47,6 +47,13 @@ LOCATION=${1:-/}
   exit 1
 }
 
+# enable quota
+btrfs quota enable
+
+# do a rescan and sleep
+btrfs quota rescan
+sleep 60
+
 # determine if the '--raw' option is supported:
 btrfs_qgroup_show_raw="btrfs qgroup show --raw"
 
