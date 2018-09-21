@@ -115,7 +115,8 @@ printf "$separatorLine"
 ## matching by IDs in btrfs subvolume list
 for (( i = 0 ; i < ${#ID__[@]} ; i++ )); do
   printf "$formatMask" ${NAME[${ID__[$i]}]} "${TOT[${ID__[$i]}]}" "${EXC[${ID__[$i]}]}" ${ID__[$i]}
-  EXCL_TOTAL=$(( EXCL_TOTAL + ${EXC_[$i]} ))
+  EXC_TMP=${EXC_[$i]}
+  EXCL_TOTAL=$(( EXCL_TOTAL + EXC_TMP ))
 done
 
 EXCL_TOTAL=$( bytesToHumanIEC "$EXCL_TOTAL" )
