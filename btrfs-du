@@ -48,11 +48,11 @@ LOCATION=${1:-/}
 }
 
 # enable quota
-btrfs quota enable
+btrfs quota enable $LOCATION
 
 # do a rescan and sleep
-btrfs quota rescan
-sleep 60
+# btrfs quota rescan
+# sleep 60
 
 # determine if the '--raw' option is supported:
 btrfs_qgroup_show_raw="btrfs qgroup show --raw"
@@ -130,6 +130,9 @@ EXCL_TOTAL=$( bytesToHumanIEC "$EXCL_TOTAL" )
 
 printf "$separatorLine"
 printf "%s %66s\n" "Total exclusive data" "$EXCL_TOTAL"
+
+# finally, enable quota
+btrfs quota disable $LOCATION
 
 # License
 #
